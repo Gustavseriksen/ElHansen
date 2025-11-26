@@ -1,0 +1,36 @@
+/* Custom CSS til Hero sektionen */
+.hero-section {
+    /* URL til baggrundsbillede */
+    background-image: url('../images/frontpage-slider-image.jpg');
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    color: white;
+    padding: 200px 0;
+}
+
+.hero-overlay {
+    background-color: rgba(0, 0, 0, 0.6);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+}
+
+/* Ændrer farven på menu-punkterne */
+.nav-pills .nav-link {
+    color: #212529; /* En mørkegrå/sort farve (standard tekstfarve) */
+    font-weight: 500; /* Gør dem evt. lidt tykkere, hvis du vil */
+}
+
+/*  Gør teksten gul, når man holder musen over */
+.nav-pills .nav-link:hover {
+    color: #ffc107; /* Samme gule farve som dine knapper */
+}
