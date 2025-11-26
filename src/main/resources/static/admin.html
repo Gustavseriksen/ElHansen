@@ -8,39 +8,8 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
 
-  <style>
-    body {
-      min-height: 100vh;
-      overflow-x: hidden;
-      background-color: #f8f9fa;
-    }
-    .sidebar {
-      min-height: 100vh;
-      background-color: #212529;
-    }
-    .nav-link {
-      color: rgba(255,255,255, .75);
-      margin-bottom: 5px;
-    }
-    .nav-link.active {
-      background-color: #ffc107 !important;
-      color: #000 !important;
-      font-weight: 600;
-    }
-    .nav-link:hover {
-      color: #fff;
-      background-color: rgba(255,255,255,0.1);
-    }
-    /* Lille overskrift i menuen */
-    .sidebar-heading {
-      font-size: .75rem;
-      text-transform: uppercase;
-      color: #6c757d;
-      margin-top: 1rem;
-      margin-bottom: .5rem;
-      padding-left: 1rem;
-    }
-  </style>
+  <link rel="stylesheet" href="css/admin-style.css">
+
 </head>
 <body>
 
@@ -68,7 +37,7 @@
       <li class="nav-item">
         <a href="#prices" class="nav-link d-flex align-items-center gap-2" data-bs-toggle="pill" role="tab">
           <i class="bi bi-currency-dollar"></i>
-          Priser & Beregner
+          Priser & Ydelser
         </a>
       </li>
 
@@ -151,7 +120,6 @@
                     <button class="btn btn-sm btn-outline-danger"><i class="bi bi-trash"></i></button>
                   </td>
                 </tr>
-
                 <tr>
                   <td>103</td>
                   <td>25. Nov</td>
@@ -175,7 +143,6 @@
                     <button class="btn btn-sm btn-outline-danger"><i class="bi bi-trash"></i></button>
                   </td>
                 </tr>
-
                 <tr>
                   <td>101</td>
                   <td>20. Nov</td>
@@ -199,32 +166,99 @@
 
       <div class="tab-pane fade" id="prices" role="tabpanel">
         <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
-          <h1 class="h2">Rediger Priser</h1>
-          <button class="btn btn-success"><i class="bi bi-check-lg me-1"></i> Gem Priser</button>
+          <h1 class="h2">Rediger Ydelser & Priser</h1>
+          <div>
+            <button class="btn btn-primary me-2" onclick="addNewServiceCard()"><i class="bi bi-plus-lg me-1"></i> Opret ny Ydelse</button>
+            <button class="btn btn-success"><i class="bi bi-check-lg me-1"></i> Gem alt</button>
+          </div>
         </div>
-        <div class="card shadow-sm border-0" style="max-width: 600px;">
-          <div class="card-body">
-            <div class="mb-3 row">
-              <label class="col-sm-6 col-form-label">Stikkontakt (Prisberegner)</label>
-              <div class="col-sm-6">
-                <div class="input-group">
-                  <input type="number" class="form-control" value="850">
-                  <span class="input-group-text">kr.</span>
+
+        <div id="servicesContainer">
+
+          <div class="card shadow-sm border-0 mb-4 service-card-wrapper">
+            <div class="card-header bg-white p-3">
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="input-group w-50">
+                  <span class="input-group-text fw-bold bg-light">Ydelse:</span>
+                  <input type="text" class="form-control fw-bold" value="Udskiftning af stikkontakt" placeholder="Navngiv ydelsen...">
                 </div>
+                <button class="btn btn-outline-danger btn-sm" onclick="deleteServiceCard(this)">Slet Ydelse</button>
               </div>
             </div>
-            <div class="mb-3 row">
-              <label class="col-sm-6 col-form-label">Ophængning af lampe</label>
-              <div class="col-sm-6">
-                <div class="input-group">
-                  <input type="number" class="form-control" value="1200">
-                  <span class="input-group-text">kr.</span>
+            <div class="card-body bg-light bg-opacity-10">
+              <h6 class="text-muted mb-3 text-uppercase small fw-bold">Materialer & Timer i denne ydelse:</h6>
+
+              <div class="component-list">
+                <div class="row mb-2 align-items-center component-row">
+                  <div class="col-md-6">
+                    <label class="small text-muted mb-1">Materiale/Service navn</label>
+                    <input type="text" class="form-control" value="LK Fuga Stikkontakt">
+                  </div>
+                  <div class="col-md-4">
+                    <label class="small text-muted mb-1">Pris (kr.)</label>
+                    <input type="number" class="form-control" value="150">
+                  </div>
+                  <div class="col-md-2 text-end mt-4">
+                    <button class="btn btn-sm btn-outline-secondary" onclick="deleteRow(this)"><i class="bi bi-trash"></i></button>
+                  </div>
                 </div>
+                <div class="row mb-2 align-items-center component-row">
+                  <div class="col-md-6">
+                    <input type="text" class="form-control" value="Arbejdsløn (30 min)">
+                  </div>
+                  <div class="col-md-4">
+                    <input type="number" class="form-control" value="700">
+                  </div>
+                  <div class="col-md-2 text-end">
+                    <button class="btn btn-sm btn-outline-secondary" onclick="deleteRow(this)"><i class="bi bi-trash"></i></button>
+                  </div>
+                </div>
+              </div>
+
+              <div class="mt-3 text-center border-top pt-3 border-light">
+                <button class="btn btn-sm btn-outline-dark" onclick="addMaterialRow(this)">
+                  <i class="bi bi-plus-circle me-1"></i> Tilføj materiale/service linje
+                </button>
               </div>
             </div>
           </div>
-        </div>
-      </div>
+
+          <div class="card shadow-sm border-0 mb-4 service-card-wrapper">
+            <div class="card-header bg-white p-3">
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="input-group w-50">
+                  <span class="input-group-text fw-bold bg-light">Ydelse:</span>
+                  <input type="text" class="form-control fw-bold" value="Ophængning af lampe">
+                </div>
+                <button class="btn btn-outline-danger btn-sm" onclick="deleteServiceCard(this)">Slet Ydelse</button>
+              </div>
+            </div>
+            <div class="card-body bg-light bg-opacity-10">
+              <h6 class="text-muted mb-3 text-uppercase small fw-bold">Materialer & Timer i denne ydelse:</h6>
+              <div class="component-list">
+                <div class="row mb-2 align-items-center component-row">
+                  <div class="col-md-6">
+                    <label class="small text-muted mb-1">Materiale/Service navn</label>
+                    <input type="text" class="form-control" value="Timepris">
+                  </div>
+                  <div class="col-md-4">
+                    <label class="small text-muted mb-1">Pris (kr.)</label>
+                    <input type="number" class="form-control" value="1200">
+                  </div>
+                  <div class="col-md-2 text-end mt-4">
+                    <button class="btn btn-sm btn-outline-secondary" onclick="deleteRow(this)"><i class="bi bi-trash"></i></button>
+                  </div>
+                </div>
+              </div>
+              <div class="mt-3 text-center border-top pt-3 border-light">
+                <button class="btn btn-sm btn-outline-dark" onclick="addMaterialRow(this)">
+                  <i class="bi bi-plus-circle me-1"></i> Tilføj materiale/service linje
+                </button>
+              </div>
+            </div>
+          </div>
+
+        </div> </div>
 
       <div class="tab-pane fade" id="edit-home" role="tabpanel">
         <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
@@ -352,10 +386,14 @@
   </div>
 </div>
 
+/* ====================================================================================================================================================
+--- JavaScript --- JavaScript --- JavaScript --- JavaScript --- JavaScript --- JavaScript --- JavaScript --- JavaScript --- JavaScript --- JavaScript
+======================================================================================================================================================= */
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
 <script>
-  // Script til at håndtere modal visning
+  // --- 1. INDBAKKE LOGIK ---
   function showDetails(name, task, message) {
     document.getElementById('msgModalTitle').innerText = "Besked fra " + name;
     document.getElementById('msgTask').innerText = task;
@@ -363,6 +401,90 @@
 
     var myModal = new bootstrap.Modal(document.getElementById('messageModal'));
     myModal.show();
+  }
+
+  // --- 2. PRIS/YDELSER LOGIK ---
+
+  // Slet en enkelt række (Materiale/Service)
+  function deleteRow(button) {
+    button.closest('.row').remove();
+  }
+
+  // Slet hele ydelses-kortet (Ydelse)
+  function deleteServiceCard(button) {
+    if(confirm('Er du sikker på, at du vil slette hele denne ydelse?')) {
+      button.closest('.service-card-wrapper').remove();
+    }
+  }
+
+  // Tilføj ny materiale-linje (Ind i det specifikke kort)
+  function addMaterialRow(button) {
+    // Find listen inde i det kort, vi trykkede på
+    const cardBody = button.closest('.card-body');
+    const listContainer = cardBody.querySelector('.component-list');
+
+    const newRow = document.createElement('div');
+    newRow.className = 'row mb-2 align-items-center component-row';
+    newRow.innerHTML = `
+            <div class="col-md-6">
+                <input type="text" class="form-control" placeholder="F.eks. Skruer eller Arbejdstid">
+            </div>
+            <div class="col-md-4">
+                <input type="number" class="form-control" placeholder="0">
+            </div>
+            <div class="col-md-2 text-end">
+                <button class="btn btn-sm btn-outline-secondary" onclick="deleteRow(this)"><i class="bi bi-trash"></i></button>
+            </div>
+        `;
+    listContainer.appendChild(newRow);
+  }
+
+  // Opret helt ny Ydelse (Nyt Kort)
+  function addNewServiceCard() {
+    const mainContainer = document.getElementById('servicesContainer');
+    const newCard = document.createElement('div');
+    newCard.className = 'card shadow-sm border-0 mb-4 service-card-wrapper';
+
+    // HTML Template for et nyt kort
+    newCard.innerHTML = `
+            <div class="card-header bg-white p-3">
+                <div class="d-flex justify-content-between align-items-center">
+                    <div class="input-group w-50">
+                        <span class="input-group-text fw-bold bg-light">Ydelse:</span>
+                        <input type="text" class="form-control fw-bold" placeholder="Navngiv ny ydelse...">
+                    </div>
+                    <button class="btn btn-outline-danger btn-sm" onclick="deleteServiceCard(this)">Slet Ydelse</button>
+                </div>
+            </div>
+            <div class="card-body bg-light bg-opacity-10">
+                <h6 class="text-muted mb-3 text-uppercase small fw-bold">Materialer & Timer i denne ydelse:</h6>
+
+                <div class="component-list">
+                    <div class="row mb-2 align-items-center component-row">
+                        <div class="col-md-6">
+                            <label class="small text-muted mb-1">Materiale/Service navn</label>
+                            <input type="text" class="form-control" placeholder="F.eks. Startgebyr">
+                        </div>
+                        <div class="col-md-4">
+                            <label class="small text-muted mb-1">Pris (kr.)</label>
+                            <input type="number" class="form-control" placeholder="0">
+                        </div>
+                        <div class="col-md-2 text-end mt-4">
+                            <button class="btn btn-sm btn-outline-secondary" onclick="deleteRow(this)"><i class="bi bi-trash"></i></button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-3 text-center border-top pt-3 border-light">
+                    <button class="btn btn-sm btn-outline-dark" onclick="addMaterialRow(this)">
+                        <i class="bi bi-plus-circle me-1"></i> Tilføj materiale/service linje
+                    </button>
+                </div>
+            </div>
+        `;
+
+    // Indsæt det nye kort i toppen
+    mainContainer.prepend(newCard);
   }
 </script>
 
