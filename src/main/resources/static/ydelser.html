@@ -18,7 +18,7 @@
         </a>
 
         <ul class="nav nav-pills">
-            <li class="nav-item"><a href="ydelser.html" class="nav-link">Ydelser</a></li>
+            <li class="nav-item"><a href="ydelser.html" class="nav-link" aria-current="page">Ydelser</a></li>
             <li class="nav-item"><a href="prisestimat.html" class="nav-link">Prisestimat</a></li>
             <li class="nav-item"><a href="kontakt.html" class="nav-link">Kontakt</a></li>
             <li class="nav-item"><a href="om.html" class="nav-link">Om</a></li>
@@ -36,74 +36,12 @@
 </div>
 
 <div class="container pb-5">
-    <div class="row row-cols-1 g-4">
-
-        <div class="col">
-            <div class="card h-100 shadow-sm border-0 bg-light">
-                <div class="card-body p-4">
-                    <div class="d-inline-flex align-items-center justify-content-center bg-warning text-white fs-4 rounded-circle mb-3" style="width: 50px; height: 50px;">
-                        <i class="bi bi-plug-fill"></i>
-                    </div>
-                    <h3 class="h4 card-title fw-bold">Udskiftning af stikkontakter & afbrydere</h3>
-                    <p class="card-text">Trænger boligen til et løft? Gamle, gule eller løse stikkontakter er ikke bare grimme – de kan også være farlige.</p>
-                    <p class="card-text">Jeg udskifter dine gamle kontakter til nye, sikre modeller (f.eks. LK Fuga). Det er en enkel og effektiv måde at modernisere dit hjem på. Jeg kan også installere lysdæmpere, så du selv kan styre stemningen i stuen.</p>
-                </div>
+    <div id="servicesContainer" class="row row-cols-1 g-4">
+        <div class="text-center w-100">
+            <div class="spinner-border text-warning" role="status">
+                <span class="visually-hidden">Loading...</span>
             </div>
         </div>
-
-        <div class="col">
-            <div class="card h-100 shadow-sm border-0 bg-light">
-                <div class="card-body p-4">
-                    <div class="d-inline-flex align-items-center justify-content-center bg-warning text-white fs-4 rounded-circle mb-3" style="width: 50px; height: 50px;">
-                        <i class="bi bi-lightbulb-fill"></i>
-                    </div>
-                    <h3 class="h4 card-title fw-bold">Ophængning af lamper & belysning</h3>
-                    <p class="card-text">Driller lampen over spisebordet, eller skal du have spots i køkkenet? Det kan være svært at få lamper til at hænge helt lige og i den rette højde.</p>
-                    <p class="card-text">Jeg hjælper med professionel montering og tilslutning af alle typer lamper. Jeg sikrer, at det sidder korrekt fast i loftet, og at ledningerne er pænt afkortet.</p>
-                </div>
-            </div>
-        </div>
-
-        <div class="col">
-            <div class="card h-100 shadow-sm border-0 bg-light">
-                <div class="card-body p-4">
-                    <div class="d-inline-flex align-items-center justify-content-center bg-warning text-white fs-4 rounded-circle mb-3" style="width: 50px; height: 50px;">
-                        <i class="bi bi-shield-fill-check"></i>
-                    </div>
-                    <h3 class="h4 card-title fw-bold">Udskiftning af HPFI-relæ (Din sikkerhed)</h3>
-                    <p class="card-text">HPFI-relæet er hjertet i din sikkerhed. Det skal slå fra øjeblikkeligt ved fejlstrøm for at forhindre stød.</p>
-                    <p class="card-text">Mange ældre huse har stadig gamle HFI-relæer, som ikke længere lever op til moderne sikkerhedskrav. Jeg udskifter din gamle installation til et nyt, lovpligtigt fejlstrømsrelæ, så du og din familie er trygge.</p>
-                </div>
-            </div>
-        </div>
-
-        <div class="col">
-            <div class="card h-100 shadow-sm border-0 bg-light">
-                <div class="card-body p-4">
-                    <div class="d-inline-flex align-items-center justify-content-center bg-warning text-white fs-4 rounded-circle mb-3" style="width: 50px; height: 50px;">
-                        <i class="bi bi-file-earmark-text-fill"></i>
-                    </div>
-                    <h3 class="h4 card-title fw-bold">El-tjek & Statusrapport</h3>
-                    <p class="card-text">Er du i tvivl om sikkerheden i din el-installation? Eller står du overfor et boligkøb eller -salg?</p>
-                    <p class="card-text">Jeg gennemgår din installation fra A-Z og tjekker for ulovlige samlinger, skjulte fejl og brandfarlige installationer. Du får et klart overblik over installationens tilstand, så du undgår ubehagelige overraskelser.</p>
-                </div>
-            </div>
-        </div>
-
-        <div class="col">
-            <div class="card h-100 shadow-sm border-0 bg-light">
-                <div class="card-body p-4">
-                    <div class="d-inline-flex align-items-center justify-content-center bg-warning text-white fs-4 rounded-circle mb-3" style="width: 50px; height: 50px;">
-                        <i class="bi bi-search"></i>
-                    </div>
-                    <h3 class="h4 card-title fw-bold">Fejlsøgning & Reparation</h3>
-                    <p class="card-text">Er strømmen gået i en del af huset? Slår relæet fra uden grund? Eller virker ovnen ikke?</p>
-                    <p class="card-text">El-fejl kan være svære at finde, hvis man ikke har det rette måleudstyr. Jeg tilbyder effektiv fejlsøgning, hvor jeg lokaliserer problemet og udbedrer det.</p>
-                    <small class="text-muted fst-italic">(Bemærk: Da fejl kan være skjulte, afregnes fejlsøgning typisk på timebasis).</small>
-                </div>
-            </div>
-        </div>
-
     </div>
 </div>
 
@@ -128,5 +66,51 @@
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+    const API_URL = "http://localhost:8080/api/ydelser";
+
+    document.addEventListener("DOMContentLoaded", () => {
+        fetchYdelser();
+    });
+
+    async function fetchYdelser() {
+        try {
+            const response = await fetch(API_URL);
+            const ydelser = await response.json();
+            const container = document.getElementById("servicesContainer");
+
+            container.innerHTML = ""; // Fjern loading spinner
+
+            if (ydelser.length === 0) {
+                container.innerHTML = '<p class="text-center text-muted">Ingen ydelser at vise lige nu.</p>';
+                return;
+            }
+
+            ydelser.forEach(ydelse => {
+                const html = `
+                <div class="col">
+                    <div class="card h-100 shadow-sm border-0 bg-light">
+                        <div class="card-body p-4">
+                            <div class="d-inline-flex align-items-center justify-content-center bg-warning text-white fs-4 rounded-circle mb-3" style="width: 50px; height: 50px;">
+                                <i class="bi ${ydelse.ikonNavn || 'bi-plug-fill'}"></i>
+                            </div>
+                            <h3 class="h4 card-title fw-bold">${ydelse.navn}</h3>
+                            <p class="card-text">${ydelse.beskrivelse || 'Ingen beskrivelse tilgængelig.'}</p>
+
+                            </div>
+                    </div>
+                </div>
+                `;
+                container.insertAdjacentHTML("beforeend", html);
+            });
+
+        } catch (error) {
+            console.error("Fejl:", error);
+            document.getElementById("servicesContainer").innerHTML = '<p class="text-center text-danger">Kunne ikke hente ydelser.</p>';
+        }
+    }
+</script>
+
 </body>
 </html>

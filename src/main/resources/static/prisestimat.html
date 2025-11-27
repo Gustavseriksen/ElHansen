@@ -4,22 +4,12 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Prisestimat - EL-Hansen</title>
-
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
-  <link rel="stylesheet" href="css/style.css">
-
+  <link rel="stylesheet" href="/css/style.css">
   <style>
-    /* Gør at kortene ligner knapper når man holder musen over */
-    .service-card {
-      cursor: pointer;
-      transition: transform 0.2s, box-shadow 0.2s;
-    }
-    .service-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 .5rem 1rem rgba(0,0,0,.15)!important;
-      border-color: #ffc107!important; /* Gør kanten gul */
-    }
+    .service-card { cursor: pointer; transition: transform 0.2s, box-shadow 0.2s; }
+    .service-card:hover { transform: translateY(-5px); box-shadow: 0 .5rem 1rem rgba(0,0,0,.15)!important; border-color: #ffc107!important; }
   </style>
 </head>
 <body>
@@ -29,7 +19,6 @@
     <a href="index.html" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
       <span class="fs-4 fw-bold">EL-Hansen</span>
     </a>
-
     <ul class="nav nav-pills">
       <li class="nav-item"><a href="ydelser.html" class="nav-link">Ydelser</a></li>
       <li class="nav-item"><a href="prisestimat.html" class="nav-link">Prisestimat</a></li>
@@ -41,62 +30,14 @@
 
 <div class="container py-5 text-center">
   <h1 class="display-5 fw-bold mb-3">Beregn din pris</h1>
-  <p class="lead text-muted">Vælg en kategori herunder for at beregne et uforpligtende prisoverslag på din opgave.</p>
+  <p class="lead text-muted">Vælg en kategori for at tilpasse din beregning.</p>
 </div>
 
 <div class="container pb-5">
-  <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
-
-    <div class="col">
-      <div class="card h-100 shadow-sm border-0 bg-light service-card" onclick="openCalculator('Udskiftning af stikkontakt', 850)">
-        <div class="card-body text-center p-4">
-          <i class="bi bi-plug-fill fs-1 text-warning mb-3"></i>
-          <h4 class="card-title">Stikkontakter</h4>
-          <p class="small text-muted">Klik for at beregne</p>
-        </div>
-      </div>
+  <div id="pricingContainer" class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+    <div class="text-center w-100">
+      <div class="spinner-border text-warning" role="status"><span class="visually-hidden">Loading...</span></div>
     </div>
-
-    <div class="col">
-      <div class="card h-100 shadow-sm border-0 bg-light service-card" onclick="openCalculator('Ophængning af lampe', 1200)">
-        <div class="card-body text-center p-4">
-          <i class="bi bi-lightbulb-fill fs-1 text-warning mb-3"></i>
-          <h4 class="card-title">Lamper & Belysning</h4>
-          <p class="small text-muted">Klik for at beregne</p>
-        </div>
-      </div>
-    </div>
-
-    <div class="col">
-      <div class="card h-100 shadow-sm border-0 bg-light service-card" onclick="openCalculator('Nyt HPFI-relæ', 4500)">
-        <div class="card-body text-center p-4">
-          <i class="bi bi-shield-fill-check fs-1 text-warning mb-3"></i>
-          <h4 class="card-title">Nyt HPFI-relæ</h4>
-          <p class="small text-muted">Klik for at beregne</p>
-        </div>
-      </div>
-    </div>
-
-    <div class="col">
-      <div class="card h-100 shadow-sm border-0 bg-light service-card" onclick="openCalculator('El-tjek & Rapport', 2500)">
-        <div class="card-body text-center p-4">
-          <i class="bi bi-file-earmark-text-fill fs-1 text-warning mb-3"></i>
-          <h4 class="card-title">El-tjek</h4>
-          <p class="small text-muted">Klik for at beregne</p>
-        </div>
-      </div>
-    </div>
-
-    <div class="col">
-      <div class="card h-100 shadow-sm border-0 bg-light service-card" onclick="openCalculator('Fejlsøgning (pr. time)', 1200)">
-        <div class="card-body text-center p-4">
-          <i class="bi bi-search fs-1 text-warning mb-3"></i>
-          <h4 class="card-title">Fejlsøgning</h4>
-          <p class="small text-muted">Klik for at beregne</p>
-        </div>
-      </div>
-    </div>
-
   </div>
 </div>
 
@@ -104,21 +45,18 @@
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
       <div class="modal-header bg-warning">
-        <h5 class="modal-title fw-bold" id="modalLabel">Beregner...</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <h5 class="modal-title fw-bold" id="modalLabel">Beregner</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
       </div>
       <div class="modal-body p-4">
 
+        <p class="small text-muted mb-3">Indtast antal for hver del du skal have lavet:</p>
+
         <form id="calcForm">
-          <input type="hidden" id="currentPrice">
+          <div id="dynamicInputs"></div>
 
-          <div class="mb-3">
-            <label for="amountInput" class="form-label fw-bold">Indtast antal / timer:</label>
-            <input type="number" class="form-control form-control-lg" id="amountInput" value="1" min="1">
-          </div>
-
-          <div class="d-grid gap-2">
-            <button type="button" class="btn btn-dark" onclick="calculateTotal()">Se Pris</button>
+          <div class="d-grid gap-2 mt-4">
+            <button type="button" class="btn btn-dark" onclick="calculateTotal()">Beregn Samlet Pris</button>
           </div>
         </form>
 
@@ -140,7 +78,6 @@
 <div class="container">
   <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
     <p class="col-md-4 mb-0 text-body-secondary">© 2025 EL-Hansen ApS</p>
-
     <ul class="nav col-md-4 justify-content-end">
       <li class="nav-item"><a href="om.html" class="nav-link px-2 text-body-secondary">Om</a></li>
       <li class="nav-item"><a href="kontakt.html" class="nav-link px-2 text-body-secondary">Kontakt</a></li>
@@ -151,45 +88,95 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
 <script>
-  // Variabel til at styre modalen
   let myModal;
+  const API_URL = "http://localhost:8080/api/ydelser";
+  // Vi gemmer ydelser globalt så vi kan finde linjerne når man klikker
+  let loadedYdelser = [];
 
-  // Når siden er loadet, gør vi klar
   document.addEventListener('DOMContentLoaded', function() {
     myModal = new bootstrap.Modal(document.getElementById('calculatorModal'));
+    fetchPricingOptions();
   });
 
-  // 1. Funktion der åbner modalen og gør den klar
-  function openCalculator(serviceName, price) {
-    // Opdater overskriften i modalen
-    document.getElementById('modalLabel').innerText = "Beregn: " + serviceName;
+  async function fetchPricingOptions() {
+    try {
+      const response = await fetch(API_URL);
+      loadedYdelser = await response.json(); // Gem data
+      const container = document.getElementById("pricingContainer");
 
-    // Gem prisen i det skjulte felt
-    document.getElementById('currentPrice').value = price;
+      container.innerHTML = "";
 
-    // Nulstil input feltet til 1
-    document.getElementById('amountInput').value = 1;
+      if (loadedYdelser.length === 0) {
+        container.innerHTML = '<p class="text-center w-100">Ingen priser fundet.</p>';
+        return;
+      }
 
-    // Skjul resultatet fra sidst (hvis der var et)
+      loadedYdelser.forEach((ydelse, index) => {
+        // Bemærk: Vi sender index med i onclick, så vi kan finde objektet i loadedYdelser arrayet
+        const html = `
+                <div class="col">
+                  <div class="card h-100 shadow-sm border-0 bg-light service-card"
+                       onclick="openCalculator(${index})">
+                    <div class="card-body text-center p-4">
+                      <i class="bi ${ydelse.ikonNavn || 'bi-plug-fill'} fs-1 text-warning mb-3"></i>
+                      <h4 class="card-title">${ydelse.navn}</h4>
+                      <p class="small text-muted">Klik for at beregne</p>
+                    </div>
+                  </div>
+                </div>
+              `;
+        container.insertAdjacentHTML("beforeend", html);
+      });
+    } catch (error) { console.error(error); }
+  }
+
+  function openCalculator(index) {
+    const ydelse = loadedYdelser[index];
+
+    document.getElementById('modalLabel').innerText = "Beregn: " + ydelse.navn;
     document.getElementById('resultArea').classList.add('d-none');
 
-    // Vis modalen
+    const inputContainer = document.getElementById("dynamicInputs");
+    inputContainer.innerHTML = "";
+
+    // Hvis der ingen linjer er, vis bare en standard besked
+    if(!ydelse.linjer || ydelse.linjer.length === 0) {
+      inputContainer.innerHTML = '<p class="text-danger">Denne ydelse har ingen pris-parametre endnu.</p>';
+    } else {
+      // BYG INPUT FELTER DYNAMISK
+      ydelse.linjer.forEach(linje => {
+        const html = `
+                <div class="mb-3 border-bottom pb-2 calc-row">
+                    <label class="form-label fw-bold d-flex justify-content-between">
+                        <span>${linje.navn}</span>
+                        <span class="text-muted small fw-normal">(${linje.pris} kr./stk)</span>
+                    </label>
+                    <div class="input-group">
+                        <span class="input-group-text">Antal</span>
+                        <input type="number" class="form-control calc-input" value="0" min="0" data-price="${linje.pris}">
+                    </div>
+                </div>
+            `;
+        inputContainer.insertAdjacentHTML("beforeend", html);
+      });
+    }
+
     myModal.show();
   }
 
-  // 2. Funktion der regner prisen ud
   function calculateTotal() {
-    // Hent værdier
-    let amount = document.getElementById('amountInput').value;
-    let pricePerUnit = document.getElementById('currentPrice').value;
+    let total = 0;
 
-    // Sikr at det er tal
-    let total = parseInt(amount) * parseInt(pricePerUnit);
+    // Find alle inputs vi lavede i openCalculator
+    const inputs = document.querySelectorAll('.calc-input');
 
-    // Vis resultatet pænt formateret (fx 1.200 kr.)
+    inputs.forEach(input => {
+      const antal = parseInt(input.value) || 0;
+      const pris = parseFloat(input.getAttribute('data-price'));
+      total += (antal * pris);
+    });
+
     document.getElementById('totalPriceDisplay').innerText = total.toLocaleString('da-DK') + " kr.";
-
-    // Fjern "d-none" så boksen bliver synlig
     document.getElementById('resultArea').classList.remove('d-none');
   }
 </script>

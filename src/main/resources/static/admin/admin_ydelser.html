@@ -4,73 +4,31 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Ydelser - Admin EL-Hansen</title>
-
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
-
-  <link rel="stylesheet" href="/static/css/admin-style.css">
+  <link rel="stylesheet" href="/css/admin-style.css">
 </head>
 <body>
 
 <div class="d-flex">
-
   <div class="d-flex flex-column flex-shrink-0 p-3 text-white sidebar" style="width: 280px;">
-
     <a href="index.html" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
       <span class="fs-4 fw-bold">EL-Hansen <span class="fs-6 fw-normal text-warning">Admin</span></span>
     </a>
-
     <hr>
-
     <ul class="nav nav-pills flex-column mb-auto">
-
       <div class="sidebar-heading">Daglig Drift</div>
-
-      <li class="nav-item">
-        <a href="admin_indbakke.html" class="nav-link d-flex align-items-center gap-2">
-          <i class="bi bi-kanban"></i>
-          Sagsstyring
-          <span class="badge text-bg-danger rounded-pill ms-auto">2</span>
-        </a>
-      </li>
-
+      <li class="nav-item"><a href="admin_indbakke.html" class="nav-link d-flex align-items-center gap-2"><i class="bi bi-kanban"></i> Sagsstyring</a></li>
       <div class="sidebar-heading">Rediger Hjemmeside</div>
-
-      <li class="nav-item">
-        <a href="admin_ydelser.html" class="nav-link active d-flex align-items-center gap-2">
-          <i class="bi bi-currency-dollar"></i>
-          Priser & Ydelser
-        </a>
-      </li>
-
-      <li class="nav-item">
-        <a href="admin_forside.html" class="nav-link d-flex align-items-center gap-2">
-          <i class="bi bi-house-door"></i>
-          Forside Tekst
-        </a>
-      </li>
-
-      <li class="nav-item">
-        <a href="admin_om.html" class="nav-link d-flex align-items-center gap-2">
-          <i class="bi bi-person-badge"></i>
-          "Om" Siden
-        </a>
-      </li>
-
-      <li class="nav-item">
-        <a href="admin_kontakt.html" class="nav-link d-flex align-items-center gap-2">
-          <i class="bi bi-geo-alt"></i>
-          Kontaktinfo
-        </a>
-      </li>
+      <li class="nav-item"><a href="admin_ydelser.html" class="nav-link active d-flex align-items-center gap-2"><i class="bi bi-currency-dollar"></i> Priser & Ydelser</a></li>
+      <li class="nav-item"><a href="admin_forside.html" class="nav-link d-flex align-items-center gap-2"><i class="bi bi-house-door"></i> Forside Tekst</a></li>
+      <li class="nav-item"><a href="admin_om.html" class="nav-link d-flex align-items-center gap-2"><i class="bi bi-person-badge"></i> "Om" Siden</a></li>
+      <li class="nav-item"><a href="admin_kontakt.html" class="nav-link d-flex align-items-center gap-2"><i class="bi bi-geo-alt"></i> Kontaktinfo</a></li>
     </ul>
-
     <hr>
-
     <div class="dropdown">
       <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" data-bs-toggle="dropdown">
-        <img src="https://github.com/mdo.png" alt="" width="32" height="32" class="rounded-circle me-2">
-        <strong>Holger</strong>
+        <img src="https://github.com/mdo.png" alt="" width="32" height="32" class="rounded-circle me-2"> <strong>Holger</strong>
       </a>
       <ul class="dropdown-menu dropdown-menu-dark text-small shadow">
         <li><a class="dropdown-item" href="index.html">Log ud (Til Forside)</a></li>
@@ -79,275 +37,194 @@
   </div>
 
   <div class="flex-grow-1 p-4">
-
     <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
-      <h1 class="h2">Rediger Ydelser & Priser</h1>
-      <div>
-        <button class="btn btn-primary me-2" onclick="addNewServiceCard()"><i class="bi bi-plus-lg me-1"></i> Opret ny Ydelse</button>
-        <button class="btn btn-success"><i class="bi bi-check-lg me-1"></i> Gem alt</button>
-      </div>
+      <h1 class="h2">Rediger Ydelser & Pris-parametre</h1>
+      <button class="btn btn-primary me-2" onclick="addNewServiceCard()"><i class="bi bi-plus-lg me-1"></i> Opret ny Ydelse</button>
     </div>
 
     <div id="servicesContainer">
-
-      <div class="card shadow-sm border-0 mb-4 service-card-wrapper">
-        <div class="card-header bg-white p-3">
-          <div class="d-flex justify-content-between align-items-center">
-            <div class="input-group w-50">
-              <span class="input-group-text fw-bold bg-light">Ydelse:</span>
-              <input type="text" class="form-control fw-bold" value="Udskiftning af stikkontakt" placeholder="Navngiv ydelsen...">
-            </div>
-            <button class="btn btn-outline-danger btn-sm" onclick="deleteServiceCard(this)">Slet Ydelse</button>
-          </div>
-        </div>
-
-        <div class="card-body bg-light bg-opacity-10">
-
-          <div class="row mb-4">
-            <div class="col-md-4">
-              <label class="form-label small fw-bold text-muted">Vælg Ikon:</label>
-              <div class="input-group">
-                <span class="input-group-text bg-white text-warning fs-5"><i class="bi bi-plug-fill preview-icon"></i></span>
-                <select class="form-select" onchange="updateIconPreview(this)">
-                  <option value="bi-plug-fill" selected>Stikkontakt</option>
-                  <option value="bi-lightbulb-fill">Lampe / Lys</option>
-                  <option value="bi-shield-fill-check">Sikkerhed / HPFI</option>
-                  <option value="bi-file-earmark-text-fill">Rapport / Papir</option>
-                  <option value="bi-search">Forstørrelsesglas</option>
-                  <option value="bi-lightning-fill">Lyn / Strøm</option>
-                  <option value="bi-tools">Værktøj</option>
-                  <option value="bi-house-gear-fill">Hus Installation</option>
-                  <option value="bi-battery-charging">El-bil / Opladning</option>
-                </select>
-              </div>
-            </div>
-
-            <div class="col-md-8">
-              <label class="form-label small fw-bold text-muted">Beskrivelse (vises på hjemmesiden):</label>
-              <textarea class="form-control" rows="1">Udskiftning af gamle stikkontakter til nye sikre modeller. Gør hjemmet mere sikkert og pænt.</textarea>
-            </div>
-          </div>
-
-          <h6 class="text-muted mb-3 text-uppercase small fw-bold border-top pt-3">Materialer & Timer i denne ydelse:</h6>
-
-          <div class="component-list">
-            <div class="row mb-2 align-items-center component-row">
-              <div class="col-md-6">
-                <label class="small text-muted mb-1">Materiale/Service navn</label>
-                <input type="text" class="form-control" value="LK Fuga Stikkontakt">
-              </div>
-              <div class="col-md-4">
-                <label class="small text-muted mb-1">Pris (kr.)</label>
-                <input type="number" class="form-control" value="150">
-              </div>
-              <div class="col-md-2 text-end mt-4">
-                <button class="btn btn-sm btn-outline-secondary" onclick="deleteRow(this)"><i class="bi bi-trash"></i></button>
-              </div>
-            </div>
-            <div class="row mb-2 align-items-center component-row">
-              <div class="col-md-6">
-                <input type="text" class="form-control" value="Arbejdsløn (30 min)">
-              </div>
-              <div class="col-md-4">
-                <input type="number" class="form-control" value="700">
-              </div>
-              <div class="col-md-2 text-end">
-                <button class="btn btn-sm btn-outline-secondary" onclick="deleteRow(this)"><i class="bi bi-trash"></i></button>
-              </div>
-            </div>
-          </div>
-
-          <div class="mt-3 text-center border-top pt-3 border-light">
-            <button class="btn btn-sm btn-outline-dark" onclick="addMaterialRow(this)">
-              <i class="bi bi-plus-circle me-1"></i> Tilføj materiale/service linje
-            </button>
-          </div>
-        </div>
+      <div class="text-center mt-5">
+        <div class="spinner-border text-primary" role="status"><span class="visually-hidden">Loading...</span></div>
       </div>
-
-      <div class="card shadow-sm border-0 mb-4 service-card-wrapper">
-        <div class="card-header bg-white p-3">
-          <div class="d-flex justify-content-between align-items-center">
-            <div class="input-group w-50">
-              <span class="input-group-text fw-bold bg-light">Ydelse:</span>
-              <input type="text" class="form-control fw-bold" value="Ophængning af lampe">
-            </div>
-            <button class="btn btn-outline-danger btn-sm" onclick="deleteServiceCard(this)">Slet Ydelse</button>
-          </div>
-        </div>
-
-        <div class="card-body bg-light bg-opacity-10">
-
-          <div class="row mb-4">
-            <div class="col-md-4">
-              <label class="form-label small fw-bold text-muted">Vælg Ikon:</label>
-              <div class="input-group">
-                <span class="input-group-text bg-white text-warning fs-5"><i class="bi bi-lightbulb-fill preview-icon"></i></span>
-                <select class="form-select" onchange="updateIconPreview(this)">
-                  <option value="bi-plug-fill">Stikkontakt</option>
-                  <option value="bi-lightbulb-fill" selected>Lampe / Lys</option>
-                  <option value="bi-shield-fill-check">Sikkerhed / HPFI</option>
-                  <option value="bi-file-earmark-text-fill">Rapport / Papir</option>
-                  <option value="bi-search">Forstørrelsesglas</option>
-                  <option value="bi-lightning-fill">Lyn / Strøm</option>
-                  <option value="bi-tools">Værktøj</option>
-                  <option value="bi-house-gear-fill">Hus Installation</option>
-                  <option value="bi-battery-charging">El-bil / Opladning</option>
-                </select>
-              </div>
-            </div>
-
-            <div class="col-md-8">
-              <label class="form-label small fw-bold text-muted">Beskrivelse (vises på hjemmesiden):</label>
-              <textarea class="form-control" rows="1">Professionel montering og tilslutning af lamper i loft eller på væg.</textarea>
-            </div>
-          </div>
-
-          <h6 class="text-muted mb-3 text-uppercase small fw-bold border-top pt-3">Materialer & Timer i denne ydelse:</h6>
-
-          <div class="component-list">
-            <div class="row mb-2 align-items-center component-row">
-              <div class="col-md-6">
-                <label class="small text-muted mb-1">Materiale/Service navn</label>
-                <input type="text" class="form-control" value="Timepris">
-              </div>
-              <div class="col-md-4">
-                <label class="small text-muted mb-1">Pris (kr.)</label>
-                <input type="number" class="form-control" value="1200">
-              </div>
-              <div class="col-md-2 text-end mt-4">
-                <button class="btn btn-sm btn-outline-secondary" onclick="deleteRow(this)"><i class="bi bi-trash"></i></button>
-              </div>
-            </div>
-          </div>
-          <div class="mt-3 text-center border-top pt-3 border-light">
-            <button class="btn btn-sm btn-outline-dark" onclick="addMaterialRow(this)">
-              <i class="bi bi-plus-circle me-1"></i> Tilføj materiale/service linje
-            </button>
-          </div>
-        </div>
-      </div>
-
-    </div> </div> </div>
+    </div>
+  </div>
+</div>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
 <script>
-  // --- YDELSER LOGIK ---
+  const API_URL = "http://localhost:8080/api/ydelser";
 
-  // 1. Skifter ikonet i preview-boksen når man vælger i dropdown
-  function updateIconPreview(selectElement) {
-    // Find det <i> tag der ligger lige før select-boksen (inde i span)
-    const iconPreview = selectElement.previousElementSibling.querySelector('.preview-icon');
-    // Fjern alle gamle klasser og sæt 'bi' + den nye valgte klasse
-    iconPreview.className = 'bi preview-icon ' + selectElement.value;
-  }
+  document.addEventListener("DOMContentLoaded", fetchYdelser);
 
-  // Slet en enkelt række (Materiale/Service)
-  function deleteRow(button) {
-    button.closest('.row').remove();
-  }
+  async function fetchYdelser() {
+    try {
+      const response = await fetch(API_URL);
+      const ydelser = await response.json();
+      const container = document.getElementById("servicesContainer");
+      container.innerHTML = "";
 
-  // Slet hele ydelses-kortet (Ydelse)
-  function deleteServiceCard(button) {
-    if(confirm('Er du sikker på, at du vil slette hele denne ydelse?')) {
-      button.closest('.service-card-wrapper').remove();
+      if (ydelser.length === 0) {
+        addNewServiceCard(); // Tilføj et tomt kort hvis listen er tom
+        return;
+      }
+
+      ydelser.forEach(ydelse => {
+        const cardHTML = createCardHTML(ydelse);
+        container.insertAdjacentHTML("beforeend", cardHTML);
+      });
+    } catch (error) {
+      console.error(error);
     }
   }
 
-  // Tilføj ny materiale-linje (Ind i det specifikke kort)
-  function addMaterialRow(button) {
-    const cardBody = button.closest('.card-body');
-    const listContainer = cardBody.querySelector('.component-list');
+  function createCardHTML(ydelse) {
+    const id = ydelse.id || "";
+    const navn = ydelse.navn || "";
+    const beskrivelse = ydelse.beskrivelse || "";
+    const ikon = ydelse.ikonNavn || "bi-plug-fill";
 
-    const newRow = document.createElement('div');
-    newRow.className = 'row mb-2 align-items-center component-row';
-    newRow.innerHTML = `
-            <div class="col-md-6">
-                <input type="text" class="form-control" placeholder="F.eks. Skruer eller Arbejdstid">
+    // Generer HTML for hver linje i ydelsen
+    let linjerHTML = "";
+    if(ydelse.linjer && ydelse.linjer.length > 0) {
+      ydelse.linjer.forEach(linje => {
+        linjerHTML += createRowHTML(linje.navn, linje.pris);
+      });
+    } else {
+      // Tilføj en tom linje som standard hvis der ingen er
+      linjerHTML = createRowHTML("", 0);
+    }
+
+    return `
+        <div class="card shadow-sm border-0 mb-4 service-card-wrapper" data-id="${id}">
+          <div class="card-header bg-white p-3">
+            <div class="d-flex justify-content-between align-items-center">
+              <div class="input-group w-50">
+                <span class="input-group-text fw-bold bg-light">Ydelse:</span>
+                <input type="text" class="form-control fw-bold inp-navn" value="${navn}" placeholder="Overskrift...">
+              </div>
+              <div class="d-flex gap-2">
+                  <button class="btn btn-success btn-sm" onclick="saveService(this)"><i class="bi bi-save me-1"></i> Gem</button>
+                  <button class="btn btn-outline-danger btn-sm" onclick="deleteService(this)"><i class="bi bi-trash"></i></button>
+              </div>
             </div>
-            <div class="col-md-4">
-                <input type="number" class="form-control" placeholder="0">
+          </div>
+
+          <div class="card-body bg-light bg-opacity-10">
+            <div class="row mb-4">
+                <div class="col-md-4">
+                    <label class="form-label small fw-bold text-muted">Vælg Ikon:</label>
+                    <div class="input-group">
+                        <span class="input-group-text bg-white text-warning fs-5"><i class="bi ${ikon} preview-icon"></i></span>
+                        <select class="form-select inp-ikon" onchange="updateIconPreview(this)">
+                            <option value="bi-plug-fill" ${ikon === 'bi-plug-fill' ? 'selected' : ''}>Stikkontakt</option>
+                            <option value="bi-lightbulb-fill" ${ikon === 'bi-lightbulb-fill' ? 'selected' : ''}>Lampe / Lys</option>
+                            <option value="bi-shield-fill-check" ${ikon === 'bi-shield-fill-check' ? 'selected' : ''}>Sikkerhed / HPFI</option>
+                            <option value="bi-search" ${ikon === 'bi-search' ? 'selected' : ''}>Fejlsøgning</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-8">
+                    <label class="form-label small fw-bold text-muted">Beskrivelse:</label>
+                    <textarea class="form-control inp-beskrivelse" rows="1">${beskrivelse}</textarea>
+                </div>
             </div>
-            <div class="col-md-2 text-end">
-                <button class="btn btn-sm btn-outline-secondary" onclick="deleteRow(this)"><i class="bi bi-trash"></i></button>
+
+            <h6 class="text-muted mb-3 text-uppercase small fw-bold border-top pt-3">Pris Parametre (Hvad kan kunden vælge?)</h6>
+
+            <div class="component-list">
+                ${linjerHTML}
             </div>
+
+            <div class="mt-3 text-center border-top pt-3 border-light">
+                <button class="btn btn-sm btn-outline-dark" onclick="addMaterialRow(this)">
+                    <i class="bi bi-plus-circle me-1"></i> Tilføj ny parameter
+                </button>
+            </div>
+          </div>
+        </div>
         `;
-    listContainer.appendChild(newRow);
   }
 
-  // Opret helt ny Ydelse (Nyt Kort)
+  function createRowHTML(navn, pris) {
+    return `
+            <div class="row mb-2 align-items-center component-row">
+                <div class="col-md-6">
+                    <input type="text" class="form-control inp-linje-navn" value="${navn}" placeholder="F.eks. Væglampe montering">
+                </div>
+                <div class="col-md-4">
+                    <div class="input-group">
+                        <input type="number" class="form-control inp-linje-pris" value="${pris}" placeholder="0">
+                        <span class="input-group-text">kr.</span>
+                    </div>
+                </div>
+                <div class="col-md-2 text-end">
+                    <button class="btn btn-sm btn-outline-secondary" onclick="deleteRow(this)"><i class="bi bi-trash"></i></button>
+                </div>
+            </div>
+        `;
+  }
+
+  // --- GEM FUNKTIONALITET (Opdateret til at gemme liste) ---
+  async function saveService(btn) {
+    const card = btn.closest(".service-card-wrapper");
+
+    // 1. Hent hovedinfo
+    const id = card.getAttribute("data-id");
+    const navn = card.querySelector(".inp-navn").value;
+    const beskrivelse = card.querySelector(".inp-beskrivelse").value;
+    const ikon = card.querySelector(".inp-ikon").value;
+
+    // 2. Hent alle linjer
+    const linjer = [];
+    const rowElements = card.querySelectorAll(".component-row");
+    rowElements.forEach(row => {
+      const lNavn = row.querySelector(".inp-linje-navn").value;
+      const lPris = row.querySelector(".inp-linje-pris").value;
+      if(lNavn) { // Gem kun hvis der står et navn
+        linjer.push({ navn: lNavn, pris: parseFloat(lPris || 0) });
+      }
+    });
+
+    // 3. Byg objektet
+    const ydelseObj = {
+      id: id ? parseInt(id) : null,
+      navn: navn,
+      beskrivelse: beskrivelse,
+      ikonNavn: ikon,
+      linjer: linjer // Her sender vi listen med til Java
+    };
+
+    try {
+      const response = await fetch(API_URL, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(ydelseObj)
+      });
+
+      if (response.ok) {
+        const savedData = await response.json();
+        card.setAttribute("data-id", savedData.id);
+        alert("Gemt!");
+      } else {
+        alert("Fejl ved gemning");
+      }
+    } catch (e) { console.error(e); }
+  }
+
   function addNewServiceCard() {
-    const mainContainer = document.getElementById('servicesContainer');
-    const newCard = document.createElement('div');
-    newCard.className = 'card shadow-sm border-0 mb-4 service-card-wrapper';
-
-    newCard.innerHTML = `
-            <div class="card-header bg-white p-3">
-                <div class="d-flex justify-content-between align-items-center">
-                    <div class="input-group w-50">
-                        <span class="input-group-text fw-bold bg-light">Ydelse:</span>
-                        <input type="text" class="form-control fw-bold" placeholder="Navngiv ny ydelse...">
-                    </div>
-                    <button class="btn btn-outline-danger btn-sm" onclick="deleteServiceCard(this)">Slet Ydelse</button>
-                </div>
-            </div>
-            <div class="card-body bg-light bg-opacity-10">
-
-                <div class="row mb-4">
-                    <div class="col-md-4">
-                        <label class="form-label small fw-bold text-muted">Vælg Ikon:</label>
-                        <div class="input-group">
-                            <span class="input-group-text bg-white text-warning fs-5"><i class="bi bi-plug-fill preview-icon"></i></span>
-                            <select class="form-select" onchange="updateIconPreview(this)">
-                                <option value="bi-plug-fill" selected>Stikkontakt</option>
-                                <option value="bi-lightbulb-fill">Lampe / Lys</option>
-                                <option value="bi-shield-fill-check">Sikkerhed / HPFI</option>
-                                <option value="bi-file-earmark-text-fill">Rapport / Papir</option>
-                                <option value="bi-search">Forstørrelsesglas</option>
-                                <option value="bi-lightning-fill">Lyn / Strøm</option>
-                                <option value="bi-tools">Værktøj</option>
-                                <option value="bi-house-gear-fill">Hus Installation</option>
-                                <option value="bi-battery-charging">El-bil / Opladning</option>
-                            </select>
-                        </div>
-                    </div>
-
-                    <div class="col-md-8">
-                        <label class="form-label small fw-bold text-muted">Beskrivelse (vises på hjemmesiden):</label>
-                        <textarea class="form-control" rows="1" placeholder="Beskriv ydelsen her..."></textarea>
-                    </div>
-                </div>
-
-                <h6 class="text-muted mb-3 text-uppercase small fw-bold border-top pt-3">Materialer & Timer i denne ydelse:</h6>
-
-                <div class="component-list">
-                    <div class="row mb-2 align-items-center component-row">
-                        <div class="col-md-6">
-                            <label class="small text-muted mb-1">Materiale/Service navn</label>
-                            <input type="text" class="form-control" placeholder="F.eks. Startgebyr">
-                        </div>
-                        <div class="col-md-4">
-                            <label class="small text-muted mb-1">Pris (kr.)</label>
-                            <input type="number" class="form-control" placeholder="0">
-                        </div>
-                        <div class="col-md-2 text-end mt-4">
-                            <button class="btn btn-sm btn-outline-secondary" onclick="deleteRow(this)"><i class="bi bi-trash"></i></button>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="mt-3 text-center border-top pt-3 border-light">
-                    <button class="btn btn-sm btn-outline-dark" onclick="addMaterialRow(this)">
-                        <i class="bi bi-plus-circle me-1"></i> Tilføj materiale/service linje
-                    </button>
-                </div>
-            </div>
-        `;
-
-    mainContainer.prepend(newCard);
+    const container = document.getElementById("servicesContainer");
+    const html = createCardHTML({navn: "", beskrivelse: "", ikonNavn: "bi-plug-fill", linjer: []});
+    container.insertAdjacentHTML("afterbegin", html);
   }
-</script>
 
+  function addMaterialRow(btn) {
+    const list = btn.closest(".card-body").querySelector(".component-list");
+    list.insertAdjacentHTML("beforeend", createRowHTML("", 0));
+  }
+
+  function deleteRow(btn) { btn.closest(".row").remove(); }
+  function updateIconPreview(sel) { sel.previousElementSibling.querySelector('i').className = 'bi preview-icon ' + sel.value; }
+</script>
 </body>
 </html>
