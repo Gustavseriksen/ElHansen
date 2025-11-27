@@ -1,39 +1,53 @@
 <!DOCTYPE html>
 <html lang="da">
 <head>
+  <!-- Meta og titler -->
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Admin - EL-Hansen</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Responsiv design for mobilvisning -->
+  <title>Admin - EL-Hansen</title> <!-- Titel på administrativ side -->
 
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+  <!-- Bootstrap og ikoner -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">   <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">   <!-- Bootstrap ikoner -->
 
+  <!-- Eget stylesheet (admin-style.css) -->
   <link rel="stylesheet" href="css/admin-style.css">
 
 </head>
 <body>
 
+<!-- Sidebar og indhold -->
 <div class="d-flex">
 
+  <!-- === SIDEBAR MENU (venstre navigationspanel)  ========================================= -->
   <div class="d-flex flex-column flex-shrink-0 p-3 text-white sidebar" style="width: 280px;">
+
+    <!-- Logo / Titel -->
     <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
       <span class="fs-4 fw-bold">EL-Hansen <span class="fs-6 fw-normal text-warning">Admin</span></span>
     </a>
+
     <hr>
 
+    <!-- Navigation menu -->
     <ul class="nav nav-pills flex-column mb-auto" id="adminMenu" role="tablist">
 
+      <!-- Daglig drift sektion -->
       <div class="sidebar-heading">Daglig Drift</div>
+
+      <!-- Indbakke (menu punkt) -->
       <li class="nav-item">
         <a href="#inbox" class="nav-link active d-flex align-items-center gap-2" data-bs-toggle="pill" role="tab">
           <i class="bi bi-inbox-fill"></i>
           Indbakke / Sager
-          <span class="badge text-bg-danger rounded-pill ms-auto">2</span>
+          <span class="badge text-bg-danger rounded-pill ms-auto">2</span> <!-- Badge for antal nye sager -->
         </a>
       </li>
 
+      <!-- Rediger hjemmeside sektion -->
       <div class="sidebar-heading">Rediger Hjemmeside</div>
 
+      <!-- Priser & Ydelser (menu punkt) -->
       <li class="nav-item">
         <a href="#prices" class="nav-link d-flex align-items-center gap-2" data-bs-toggle="pill" role="tab">
           <i class="bi bi-currency-dollar"></i>
@@ -41,6 +55,7 @@
         </a>
       </li>
 
+      <!-- Forside tekst (menu punkt) -->
       <li class="nav-item">
         <a href="#edit-home" class="nav-link d-flex align-items-center gap-2" data-bs-toggle="pill" role="tab">
           <i class="bi bi-house-door"></i>
@@ -48,6 +63,7 @@
         </a>
       </li>
 
+      <!-- Om os (menu punkt) -->
       <li class="nav-item">
         <a href="#edit-about" class="nav-link d-flex align-items-center gap-2" data-bs-toggle="pill" role="tab">
           <i class="bi bi-person-badge"></i>
@@ -55,6 +71,7 @@
         </a>
       </li>
 
+      <!-- Kontaktinfo (menu punkt) -->
       <li class="nav-item">
         <a href="#edit-contact" class="nav-link d-flex align-items-center gap-2" data-bs-toggle="pill" role="tab">
           <i class="bi bi-geo-alt"></i>
@@ -64,6 +81,8 @@
     </ul>
 
     <hr>
+
+    <!-- Profilbillede dropdown -->
     <div class="dropdown">
       <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" data-bs-toggle="dropdown">
         <img src="https://github.com/mdo.png" alt="" width="32" height="32" class="rounded-circle me-2">
@@ -75,12 +94,17 @@
     </div>
   </div>
 
+  <!-- === MAIN CONTENT AREA ==================================== -->
   <div class="flex-grow-1 p-4">
 
+    <!-- Bootstrap Tabs indhold -->
     <div class="tab-content">
 
+      <!-- ========== INDBAKKE SEKTION ========== -->
       <div class="tab-pane fade show active" id="inbox" role="tabpanel">
         <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
+
+          <!-- Tabel header -->
           <h1 class="h2">Indkomne henvendelser</h1>
           <div class="btn-toolbar mb-2 mb-md-0">
             <button type="button" class="btn btn-sm btn-outline-secondary">
@@ -89,6 +113,7 @@
           </div>
         </div>
 
+        <!-- Kort der indeholder skemaet -->
         <div class="card shadow-sm border-0">
           <div class="card-body p-0">
             <div class="table-responsive">
@@ -386,10 +411,8 @@
   </div>
 </div>
 
-/* ====================================================================================================================================================
---- JavaScript --- JavaScript --- JavaScript --- JavaScript --- JavaScript --- JavaScript --- JavaScript --- JavaScript --- JavaScript --- JavaScript
-======================================================================================================================================================= */
 
+<!-- JavaScript --- JavaScript --- JavaScript --- JavaScript --- JavaScript --- JavaScript --- JavaScript --- JavaScript --- JavaScript --- JavaScript -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
 <script>

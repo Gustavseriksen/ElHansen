@@ -1,25 +1,37 @@
+/* --- GENERELT LAYOUT --- */
+/* Sørger for at siden altid fylder mindst hele skærmens højde */
 body {
     min-height: 100vh;
     overflow-x: hidden;
     background-color: #f8f9fa;
 }
+
+/* --- SIDEBAR (VENSTRE MENU) --- */
 .sidebar {
     min-height: 100vh;
     background-color: #212529;
 }
+
+/* --- NAVIGATIONSLINKS --- */
 .nav-link {
     color: rgba(255,255,255, .75);
     margin-bottom: 5px;
 }
+
+/* Design når en fane er valgt (Aktiv) */
 .nav-link.active {
     background-color: #ffc107 !important;
     color: #000 !important;
     font-weight: 600;
 }
+
+/* Hover-effekt når musen holdes over */
 .nav-link:hover {
     color: #fff;
     background-color: rgba(255,255,255,0.1);
 }
+
+/* --- OVERSKRIFTER I MENUEN --- */
 .sidebar-heading {
     font-size: .75rem;
     text-transform: uppercase;
