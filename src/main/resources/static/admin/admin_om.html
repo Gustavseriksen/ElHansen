@@ -4,73 +4,31 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Om Siden - Admin EL-Hansen</title>
-
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
-
-  <link rel="stylesheet" href="/static/css/admin-style.css">
+  <link rel="stylesheet" href="/css/admin-style.css">
 </head>
 <body>
 
 <div class="d-flex">
-
   <div class="d-flex flex-column flex-shrink-0 p-3 text-white sidebar" style="width: 280px;">
-
     <a href="index.html" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
       <span class="fs-4 fw-bold">EL-Hansen <span class="fs-6 fw-normal text-warning">Admin</span></span>
     </a>
-
     <hr>
-
     <ul class="nav nav-pills flex-column mb-auto">
-
       <div class="sidebar-heading">Daglig Drift</div>
-
-      <li class="nav-item">
-        <a href="admin_indbakke.html" class="nav-link d-flex align-items-center gap-2">
-          <i class="bi bi-kanban"></i>
-          Sagsstyring
-          <span class="badge text-bg-danger rounded-pill ms-auto">2</span>
-        </a>
-      </li>
-
+      <li class="nav-item"><a href="admin_indbakke.html" class="nav-link d-flex align-items-center gap-2"><i class="bi bi-kanban"></i> Sagsstyring</a></li>
       <div class="sidebar-heading">Rediger Hjemmeside</div>
-
-      <li class="nav-item">
-        <a href="admin_ydelser.html" class="nav-link d-flex align-items-center gap-2">
-          <i class="bi bi-currency-dollar"></i>
-          Priser & Ydelser
-        </a>
-      </li>
-
-      <li class="nav-item">
-        <a href="admin_forside.html" class="nav-link d-flex align-items-center gap-2">
-          <i class="bi bi-house-door"></i>
-          Forside Tekst
-        </a>
-      </li>
-
-      <li class="nav-item">
-        <a href="admin_om.html" class="nav-link active d-flex align-items-center gap-2">
-          <i class="bi bi-person-badge"></i>
-          "Om" Siden
-        </a>
-      </li>
-
-      <li class="nav-item">
-        <a href="admin_kontakt.html" class="nav-link d-flex align-items-center gap-2">
-          <i class="bi bi-geo-alt"></i>
-          Kontaktinfo
-        </a>
-      </li>
+      <li class="nav-item"><a href="admin_ydelser.html" class="nav-link d-flex align-items-center gap-2"><i class="bi bi-currency-dollar"></i> Priser & Ydelser</a></li>
+      <li class="nav-item"><a href="admin_forside.html" class="nav-link d-flex align-items-center gap-2"><i class="bi bi-house-door"></i> Forside Tekst</a></li>
+      <li class="nav-item"><a href="admin_om.html" class="nav-link active d-flex align-items-center gap-2"><i class="bi bi-person-badge"></i> "Om" Siden</a></li>
+      <li class="nav-item"><a href="admin_kontakt.html" class="nav-link d-flex align-items-center gap-2"><i class="bi bi-geo-alt"></i> Kontaktinfo</a></li>
     </ul>
-
     <hr>
-
     <div class="dropdown">
       <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" data-bs-toggle="dropdown">
-        <img src="https://github.com/mdo.png" alt="" width="32" height="32" class="rounded-circle me-2">
-        <strong>Holger</strong>
+        <img src="https://github.com/mdo.png" alt="" width="32" height="32" class="rounded-circle me-2"> <strong>Holger</strong>
       </a>
       <ul class="dropdown-menu dropdown-menu-dark text-small shadow">
         <li><a class="dropdown-item" href="index.html">Log ud (Til Forside)</a></li>
@@ -79,10 +37,9 @@
   </div>
 
   <div class="flex-grow-1 p-4">
-
     <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
       <h1 class="h2">Rediger "Om Os"</h1>
-      <button class="btn btn-success"><i class="bi bi-check-lg me-1"></i> Gem Ændringer</button>
+      <button class="btn btn-success" onclick="saveOmInfo()"><i class="bi bi-check-lg me-1"></i> Gem Ændringer</button>
     </div>
 
     <div class="row g-4">
@@ -91,18 +48,37 @@
         <div class="card shadow-sm border-0 h-100">
           <div class="card-header bg-white fw-bold">Tekstindhold</div>
           <div class="card-body">
+
+            <h6 class="text-muted text-uppercase small fw-bold mb-3">Introduktion</h6>
             <div class="mb-3">
               <label class="form-label fw-bold">Hovedoverskrift</label>
-              <input type="text" class="form-control" value="Ung energi og faglig stolthed">
+              <input type="text" class="form-control" id="inpOverskrift">
             </div>
             <div class="mb-3">
               <label class="form-label fw-bold">Første tekstafsnit</label>
-              <textarea class="form-control" rows="4">EL-hansen er ejet og drevet af Holger Kongstad Jensen. Jeg er uddannet elektriker...</textarea>
+              <textarea class="form-control" rows="4" id="inpTekst1"></textarea>
             </div>
             <div class="mb-3">
               <label class="form-label fw-bold">Andet tekstafsnit</label>
-              <textarea class="form-control" rows="4">At være en ung håndværker ser jeg som min største styrke...</textarea>
+              <textarea class="form-control" rows="4" id="inpTekst2"></textarea>
             </div>
+
+            <hr class="my-4">
+
+            <h6 class="text-muted text-uppercase small fw-bold mb-3">Garanti & Citat</h6>
+            <div class="mb-3">
+              <label class="form-label fw-bold">Underoverskrift (Garanti)</label>
+              <input type="text" class="form-control" id="inpUnderOverskrift">
+            </div>
+            <div class="mb-3">
+              <label class="form-label fw-bold">Garantitekst</label>
+              <textarea class="form-control" rows="3" id="inpGaranti"></textarea>
+            </div>
+            <div class="mb-3">
+              <label class="form-label fw-bold">Citat boks</label>
+              <textarea class="form-control bg-light fst-italic" rows="2" id="inpCitat"></textarea>
+            </div>
+
           </div>
         </div>
       </div>
@@ -112,20 +88,77 @@
           <div class="card-header bg-white fw-bold">Profilbillede</div>
           <div class="card-body text-center">
             <p class="small text-muted">Nuværende billede:</p>
-            <img src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?q=80&w=2070&auto=format&fit=crop" class="img-fluid rounded mb-3" style="max-height: 200px;">
+            <img id="imgPreview" src="" class="img-fluid rounded mb-3" style="max-height: 200px; object-fit: cover;">
 
-            <label class="form-label text-start w-100 fw-bold">Upload nyt billede</label>
-            <input class="form-control" type="file" id="formFile">
-            <div class="form-text">Anbefalet størrelse: 800x600 pixels.</div>
+            <label class="form-label text-start w-100 fw-bold">Billede URL (Link)</label>
+            <input class="form-control mb-2" type="text" id="inpBilledeUrl" placeholder="https://..." oninput="updatePreview()">
+            <div class="form-text text-start">Indsæt et link eller stien til billedet.</div>
           </div>
         </div>
       </div>
 
     </div>
-
-  </div> </div>
+  </div>
+</div>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+  const API_URL = "http://localhost:8080/api/om-info";
+
+  // Hent data ved load
+  document.addEventListener("DOMContentLoaded", async () => {
+    try {
+      const response = await fetch(API_URL);
+      const data = await response.json();
+
+      // Sæt eksisterende felter
+      document.getElementById("inpOverskrift").value = data.overskrift || "";
+      document.getElementById("inpTekst1").value = data.tekst1 || "";
+      document.getElementById("inpTekst2").value = data.tekst2 || "";
+
+      // Sæt NYE felter
+      document.getElementById("inpUnderOverskrift").value = data.underOverskrift || "";
+      document.getElementById("inpGaranti").value = data.garantiTekst || "";
+      document.getElementById("inpCitat").value = data.citat || "";
+
+      const imgUrl = data.billedeUrl || "https://placehold.co/600x400";
+      document.getElementById("inpBilledeUrl").value = imgUrl;
+      document.getElementById("imgPreview").src = imgUrl;
+
+    } catch (e) { console.error(e); }
+  });
+
+  function updatePreview() {
+    const url = document.getElementById("inpBilledeUrl").value;
+    if(url) document.getElementById("imgPreview").src = url;
+  }
+
+  // Gem data
+  async function saveOmInfo() {
+    const infoObj = {
+      overskrift: document.getElementById("inpOverskrift").value,
+      tekst1: document.getElementById("inpTekst1").value,
+      tekst2: document.getElementById("inpTekst2").value,
+      // NYE FELTER
+      underOverskrift: document.getElementById("inpUnderOverskrift").value,
+      garantiTekst: document.getElementById("inpGaranti").value,
+      citat: document.getElementById("inpCitat").value,
+
+      billedeUrl: document.getElementById("inpBilledeUrl").value
+    };
+
+    try {
+      const response = await fetch(API_URL, {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(infoObj)
+      });
+      if (response.ok) alert("Opdateret!");
+      else alert("Fejl.");
+    } catch (e) { console.error(e); }
+  }
+</script>
 
 </body>
 </html>
