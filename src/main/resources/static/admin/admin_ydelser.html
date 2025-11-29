@@ -21,6 +21,7 @@
       <li class="nav-item"><a href="admin_indbakke.html" class="nav-link d-flex align-items-center gap-2"><i class="bi bi-kanban"></i> Sagsstyring</a></li>
       <div class="sidebar-heading">Rediger Hjemmeside</div>
       <li class="nav-item"><a href="admin_ydelser.html" class="nav-link active d-flex align-items-center gap-2"><i class="bi bi-currency-dollar"></i> Priser & Ydelser</a></li>
+      <li class="nav-item"><a href="admin_cases.html" class="nav-link d-flex align-items-center gap-2"><i class="bi bi-images"></i> Tidligere Opgaver</a></li>
       <li class="nav-item"><a href="admin_forside.html" class="nav-link d-flex align-items-center gap-2"><i class="bi bi-house-door"></i> Forside Tekst</a></li>
       <li class="nav-item"><a href="admin_om.html" class="nav-link d-flex align-items-center gap-2"><i class="bi bi-person-badge"></i> "Om" Siden</a></li>
       <li class="nav-item"><a href="admin_kontakt.html" class="nav-link d-flex align-items-center gap-2"><i class="bi bi-geo-alt"></i> Kontaktinfo</a></li>
@@ -117,11 +118,27 @@
                     <div class="input-group">
                         <span class="input-group-text bg-white text-warning fs-5"><i class="bi ${ikon} preview-icon"></i></span>
                         <select class="form-select inp-ikon" onchange="updateIconPreview(this)">
-                            <option value="bi-plug-fill" ${ikon === 'bi-plug-fill' ? 'selected' : ''}>Stikkontakt</option>
-                            <option value="bi-lightbulb-fill" ${ikon === 'bi-lightbulb-fill' ? 'selected' : ''}>Lampe / Lys</option>
-                            <option value="bi-shield-fill-check" ${ikon === 'bi-shield-fill-check' ? 'selected' : ''}>Sikkerhed / HPFI</option>
-                            <option value="bi-search" ${ikon === 'bi-search' ? 'selected' : ''}>Fejlsøgning</option>
-                        </select>
+    <option value="bi-plug-fill" ${ikon === 'bi-plug-fill' ? 'selected' : ''}>Stikkontakt</option>
+    <option value="bi-lightbulb-fill" ${ikon === 'bi-lightbulb-fill' ? 'selected' : ''}>Lampe / Lys</option>
+    <option value="bi-lightning-charge-fill" ${ikon === 'bi-lightning-charge-fill' ? 'selected' : ''}>Strøm / El-tavle</option>
+    <option value="bi-shield-fill-check" ${ikon === 'bi-shield-fill-check' ? 'selected' : ''}>Sikkerhed / HPFI</option>
+
+    <option value="bi-ev-station-fill" ${ikon === 'bi-ev-station-fill' ? 'selected' : ''}>El-bil Lader</option>
+    <option value="bi-battery-charging" ${ikon === 'bi-battery-charging' ? 'selected' : ''}>Batteri / Solceller</option>
+    <option value="bi-fan" ${ikon === 'bi-fan' ? 'selected' : ''}>Ventilation / Klima</option>
+    <option value="bi-thermometer-sun" ${ikon === 'bi-thermometer-sun' ? 'selected' : ''}>Varmepumpe</option>
+
+    <option value="bi-router" ${ikon === 'bi-router' ? 'selected' : ''}>Netværk / Wi-Fi</option>
+    <option value="bi-camera-video-fill" ${ikon === 'bi-camera-video-fill' ? 'selected' : ''}>Overvågning / Kamera</option>
+    <option value="bi-speaker-fill" ${ikon === 'bi-speaker-fill' ? 'selected' : ''}>Dørtelefon / Lyd</option>
+
+    <option value="bi-house-fill" ${ikon === 'bi-house-fill' ? 'selected' : ''}>Hus / Villa</option>
+    <option value="bi-building-fill" ${ikon === 'bi-building-fill' ? 'selected' : ''}>Erhverv / Ejendom</option>
+    <option value="bi-tools" ${ikon === 'bi-tools' ? 'selected' : ''}>Værktøj / Reparation</option>
+    <option value="bi-search" ${ikon === 'bi-search' ? 'selected' : ''}>Fejlsøgning</option>
+    <option value="bi-file-earmark-text-fill" ${ikon === 'bi-file-earmark-text-fill' ? 'selected' : ''}>Rapport / El-tjek</option>
+    <option value="bi-exclamation-triangle-fill" ${ikon === 'bi-exclamation-triangle-fill' ? 'selected' : ''}>Akut / Fejl</option>
+</select>
                     </div>
                 </div>
                 <div class="col-md-8">

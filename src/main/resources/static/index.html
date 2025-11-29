@@ -11,18 +11,21 @@
 </head>
 <body>
 
-<div class="container">
-    <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
-        <a href="index.html" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
-            <span class="fs-4 fw-bold">EL-Hansen</span>
-        </a>
-        <ul class="nav nav-pills">
-            <li class="nav-item"><a href="ydelser.html" class="nav-link">Ydelser</a></li>
-            <li class="nav-item"><a href="prisestimat.html" class="nav-link">Prisestimat</a></li>
-            <li class="nav-item"><a href="kontakt.html" class="nav-link">Kontakt</a></li>
-            <li class="nav-item"><a href="om.html" class="nav-link">Om</a></li>
-        </ul>
-    </header>
+<div class="sticky-top bg-white shadow-sm border-bottom mb-4">
+    <div class="container">
+        <header class="d-flex flex-wrap justify-content-center py-3">
+            <a href="index.html" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
+                <span class="fs-4 fw-bold">EL-Hansen</span>
+            </a>
+
+            <ul class="nav nav-pills">
+                <li class="nav-item"><a href="ydelser.html" class="nav-link">Ydelser</a></li>
+                <li class="nav-item"><a href="prisestimat.html" class="nav-link">Prisestimat</a></li>
+                <li class="nav-item"><a href="kontakt.html" class="nav-link">Kontakt</a></li>
+                <li class="nav-item"><a href="om.html" class="nav-link">Om</a></li>
+            </ul>
+        </header>
+    </div>
 </div>
 
 <div class="hero-section text-center" id="heroSection">
@@ -47,6 +50,32 @@
     </div>
 </div>
 
+<div class="bg-light py-5"> <div class="container">
+    <div class="text-center mb-5">
+        <h2 class="fw-bold">Tidligere Arbejde</h2>
+        <p class="text-muted">Se et udpluk af de opgaver, jeg har løst for glade kunder.</p>
+    </div>
+
+    <div id="portfolioCarousel" class="carousel slide rounded shadow overflow-hidden" data-bs-ride="carousel">
+
+        <div class="carousel-inner" id="carouselContent">
+            <div class="text-center p-5">
+                <div class="spinner-border text-warning" role="status"></div>
+            </div>
+        </div>
+
+        <button class="carousel-control-prev" type="button" data-bs-target="#portfolioCarousel" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon bg-dark rounded-circle p-3" aria-hidden="true"></span>
+            <span class="visually-hidden">Forrige</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#portfolioCarousel" data-bs-slide="next">
+            <span class="carousel-control-next-icon bg-dark rounded-circle p-3" aria-hidden="true"></span>
+            <span class="visually-hidden">Næste</span>
+        </button>
+    </div>
+</div>
+</div>
+
 <div class="container">
     <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
         <p class="col-md-4 mb-0 text-body-secondary">© 2025 EL-Hansen ApS</p>
@@ -60,11 +89,20 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
 <script>
-    const API_URL = "http://localhost:8080/api/forside-info";
+    // URL'er til API
+    const FORSIDE_API = "http://localhost:8080/api/forside-info";
+    const PORTFOLIO_API = "http://localhost:8080/api/tidligere-opgaver";
 
     document.addEventListener("DOMContentLoaded", async () => {
+        // Kald begge funktioner når siden loader
+        fetchForsideInfo();
+        fetchPortfolio();
+    });
+
+    // Funktion 1: Hent Hero og Velkomst tekst
+    async function fetchForsideInfo() {
         try {
-            const response = await fetch(API_URL);
+            const response = await fetch(FORSIDE_API);
             const data = await response.json();
 
             // Tekstfelter
@@ -74,14 +112,45 @@
             document.getElementById("displayVelkomstTekst").innerText = data.velkomstTekst || "";
 
             // Baggrundsbillede
-            // Vi ændrer CSS 'background-image' direkte på elementet via JS
             if(data.heroBilledeUrl) {
                 const heroSection = document.getElementById("heroSection");
                 heroSection.style.backgroundImage = `url('${data.heroBilledeUrl}')`;
             }
+        } catch (e) { console.error("Fejl ved forside info", e); }
+    }
 
-        } catch (e) { console.error("Kunne ikke hente forside data", e); }
-    });
+    // Funktion 2: Hent Karrusel billeder (NY)
+    async function fetchPortfolio() {
+        try {
+            const response = await fetch(PORTFOLIO_API);
+            const opgaver = await response.json();
+            const container = document.getElementById("carouselContent");
+
+            if(opgaver.length === 0) {
+                container.innerHTML = '<p class="text-center p-5">Ingen tidligere opgaver at vise endnu.</p>';
+                return;
+            }
+
+            container.innerHTML = ""; // Tøm loading spinner
+
+            opgaver.forEach((opgave, index) => {
+                // Den første slide skal have klassen 'active' for at Bootstrap virker
+                const activeClass = index === 0 ? "active" : "";
+
+                const html = `
+                <div class="carousel-item ${activeClass}">
+                    <img src="${opgave.billedeUrl}" class="d-block w-100" style="height: 500px; object-fit: cover; filter: brightness(0.6);">
+                    <div class="carousel-caption d-none d-md-block p-4 rounded" style="background: rgba(0,0,0,0.6); bottom: 40px;">
+                        <h3 class="fw-bold text-warning">${opgave.overskrift}</h3>
+                        <p class="lead text-white mb-0">${opgave.beskrivelse}</p>
+                    </div>
+                </div>
+                `;
+                container.insertAdjacentHTML("beforeend", html);
+            });
+
+        } catch(e) { console.error("Fejl ved portfolio", e); }
+    }
 </script>
 
 </body>
