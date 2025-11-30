@@ -12,10 +12,10 @@
 <body>
 
 <div class="sticky-top bg-white shadow-sm border-bottom mb-4">
-    <div class="container">
+    <div class="container-fluid px-4">
         <header class="d-flex flex-wrap justify-content-center py-3">
             <a href="index.html" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
-                <span class="fs-4 fw-bold">EL-Hansen</span>
+                <span class="fs-4 fw-bold">EL–Hansen</span>
             </a>
 
             <ul class="nav nav-pills">
@@ -47,13 +47,14 @@
     </div>
 </div>
 
-<div class="bg-dark text-white py-5">
-    <div class="container text-center">
+<div class="container py-5 border-top"> <div class="row justify-content-center text-center">
+    <div class="col-lg-8">
         <h3 class="fw-bold mb-3">Fandt du ikke det, du søgte?</h3>
-        <p class="lead mb-4">Ovenstående er blot et udpluk. Jeg løser også opgaver som tilslutning af hvidevarer, etablering af byggestrøm og meget mere.</p>
+        <p class="lead text-muted mb-4">Ovenstående er blot et udpluk. Jeg løser også opgaver som tilslutning af hvidevarer, etablering af byggestrøm og meget mere.</p>
         <p class="fs-5">Ring til Holger på tlf. <span class="fw-bold text-warning">36 15 45 00</span> – så tager vi en snak om din opgave.</p>
         <a href="kontakt.html" class="btn btn-warning btn-lg mt-3">Kontakt os her</a>
     </div>
+</div>
 </div>
 
 <div class="container">
@@ -91,19 +92,20 @@
 
             ydelser.forEach(ydelse => {
                 const html = `
-                <div class="col">
-                    <div class="card h-100 shadow-sm border-0 bg-light">
-                        <div class="card-body p-4">
-                            <div class="d-inline-flex align-items-center justify-content-center bg-warning text-white fs-4 rounded-circle mb-3" style="width: 50px; height: 50px;">
-                                <i class="bi ${ydelse.ikonNavn || 'bi-plug-fill'}"></i>
-                            </div>
-                            <h3 class="h4 card-title fw-bold">${ydelse.navn}</h3>
-                            <p class="card-text">${ydelse.beskrivelse || 'Ingen beskrivelse tilgængelig.'}</p>
+    <div class="col">
+        <div class="card h-100 shadow-sm border-0 bg-light">
+            <div class="card-body p-4">
 
-                            </div>
-                    </div>
+                <div class="mb-3">
+                    <span class="material-symbols-outlined">${ydelse.ikonNavn || 'power'}</span>
                 </div>
-                `;
+
+                <h3 class="h4 card-title fw-bold">${ydelse.navn}</h3>
+                <p class="card-text">${ydelse.beskrivelse || 'Ingen beskrivelse tilgængelig.'}</p>
+            </div>
+        </div>
+    </div>
+    `;
                 container.insertAdjacentHTML("beforeend", html);
             });
 

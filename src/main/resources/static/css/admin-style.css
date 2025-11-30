@@ -1,9 +1,22 @@
+/* 1. HENT FONTE & IKONER (Samme som frontend) */
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Turret+Road:wght@300;500;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0');
+
 /* --- GENERELT LAYOUT --- */
-/* Sørger for at siden altid fylder mindst hele skærmens højde */
 body {
     min-height: 100vh;
     overflow-x: hidden;
     background-color: #f8f9fa;
+    /* Brug Space Grotesk som standard font */
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 400;
+}
+
+/* Gør overskrifter fede og tekniske */
+h1, h2, h3, h4, h5, h6, .h1, .h2 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700;
+    letter-spacing: -0.5px;
 }
 
 /* --- SIDEBAR (VENSTRE MENU) --- */
@@ -12,31 +25,100 @@ body {
     background-color: #212529;
 }
 
+/* LOGO: EL-Hansen (Turret Road Extra Bold - Ligesom på frontend) */
+.sidebar .fs-4 {
+    font-family: 'Turret Road', sans-serif;
+    font-weight: 800 !important;
+    letter-spacing: 2px;
+    color: #fff;
+}
+
+/* Det lille gule "Admin" skilt */
+.sidebar .text-warning {
+    color: #EEC355 !important; /* Din brand-gul */
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 400;
+}
+
 /* --- NAVIGATIONSLINKS --- */
 .nav-link {
     color: rgba(255,255,255, .75);
     margin-bottom: 5px;
+    font-family: 'Space Grotesk', sans-serif; /* Pæn læselig font */
+    font-weight: 400;
+    transition: all 0.2s;
 }
 
 /* Design når en fane er valgt (Aktiv) */
 .nav-link.active {
-    background-color: #ffc107 !important;
-    color: #000 !important;
-    font-weight: 600;
+    background-color: #EEC355 !important; /* Din brand-gul */
+    color: #000 !important;                /* Sort tekst */
+    font-weight: 700;                      /* Fed skrift */
+    box-shadow: 0 4px 6px rgba(0,0,0,0.2); /* Lille skygge */
 }
 
 /* Hover-effekt når musen holdes over */
 .nav-link:hover {
-    color: #fff;
-    background-color: rgba(255,255,255,0.1);
+    color: #EEC355; /* Gul tekst ved hover */
+    background-color: rgba(255,255,255,0.05);
 }
 
 /* --- OVERSKRIFTER I MENUEN --- */
 .sidebar-heading {
     font-size: .75rem;
     text-transform: uppercase;
-    color: #6c757d;
+    color: #adb5bd; /* Lidt lysere grå */
     margin-top: 1rem;
     margin-bottom: .5rem;
     padding-left: 1rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+/* --- KNAPPER & GENERELT --- */
+
+/* Knapper */
+.btn-primary {
+    background-color: #212529; /* Sort knap */
+    border-color: #212529;
+}
+.btn-primary:hover {
+    background-color: #000;
+    border-color: #000;
+}
+
+/* Success knapper (Gem) kan være din gule farve */
+.btn-success {
+    background-color: #EEC355;
+    border-color: #EEC355;
+    color: #000;
+    font-weight: 600;
+}
+.btn-success:hover {
+    background-color: #dcb34a;
+    border-color: #dcb34a;
+    color: #000;
+}
+
+/* --- IKONER (Google Material Symbols) --- */
+.material-symbols-outlined {
+    font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    vertical-align: middle;
+}
+
+/* --- YDELSER KORT (Admin Fix) --- */
+
+/* Gør selve kortet tydeligt med hvid baggrund og kant */
+.service-card-wrapper {
+    background-color: #ffffff;
+    border: 1px solid #dee2e6; /* Lysegrå kant */
+    border-radius: 8px;        /* Rundede hjørner */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05); /* Lille skygge */
+    padding-bottom: 15px;      /* Luft i bunden af kortet */
+    margin-bottom: 30px !important; /* Mere luft ned til næste kort */
+}
+
+/* Sørg for at der er luft i bunden af hele siden så man kan scrolle forbi sidste knap */
+#servicesContainer {
+    padding-bottom: 100px;
 }

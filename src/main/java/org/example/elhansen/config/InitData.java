@@ -36,83 +36,83 @@ public class InitData implements CommandLineRunner {
             System.out.println("Databasen er tom. Opretter 12 standard ydelser...");
 
             // 1. Stikkontakter
-            Ydelse stik = new Ydelse("Udskiftning af stikkontakt", "Vi udskifter dine gamle, løse eller malede kontakter til nye sikre modeller.", "bi-plug-fill");
+            Ydelse stik = new Ydelse("Udskiftning af stikkontakt", "Vi udskifter dine gamle, løse eller malede kontakter til nye sikre modeller.", "power");
             stik.getLinjer().add(new YdelseLinje("Ny stikkontakt (LK Fuga)", 150.0));
             stik.getLinjer().add(new YdelseLinje("Udskiftning (Arbejdsløn)", 600.0));
             stik.getLinjer().add(new YdelseLinje("Kørsel", 200.0));
             ydelseRepository.save(stik);
 
             // 2. Lamper
-            Ydelse lampe = new Ydelse("Ophængning af lamper", "Professionel montering af lamper i loft eller på væg, så de hænger snorlige.", "bi-lightbulb-fill");
+            Ydelse lampe = new Ydelse("Ophængning af lamper", "Professionel montering af lamper i loft eller på væg, så de hænger snorlige.", "lightbulb");
             lampe.getLinjer().add(new YdelseLinje("Montering af lampe (pr. stk)", 450.0));
             lampe.getLinjer().add(new YdelseLinje("Opsætning af lampested", 650.0));
             lampe.getLinjer().add(new YdelseLinje("Timepris (ved specielle lamper)", 850.0));
             ydelseRepository.save(lampe);
 
             // 3. HPFI & Tavle
-            Ydelse hpfi = new Ydelse("Nyt HPFI-Relæ & Tavle", "Udskiftning af eltavle eller relæ for din og familiens sikkerhed.", "bi-shield-fill-check");
+            Ydelse hpfi = new Ydelse("Nyt HPFI-Relæ & Tavle", "Udskiftning af eltavle eller relæ for din og familiens sikkerhed.", "gpp_good");
             hpfi.getLinjer().add(new YdelseLinje("HPFI Relæ enhed", 1200.0));
             hpfi.getLinjer().add(new YdelseLinje("Montering og lovpligtig test", 1500.0));
             hpfi.getLinjer().add(new YdelseLinje("Ny gruppeafbryder", 350.0));
             ydelseRepository.save(hpfi);
 
             // 4. El-tjek (Bolighandel)
-            Ydelse tjek = new Ydelse("El-tjek & Statusrapport", "Lovpligtigt eftersyn ved salg af andel eller ejerbolig. Få vished om installationerne.", "bi-file-earmark-text-fill");
+            Ydelse tjek = new Ydelse("El-tjek & Statusrapport", "Lovpligtigt eftersyn ved salg af andel eller ejerbolig. Få vished om installationerne.", "description");
             tjek.getLinjer().add(new YdelseLinje("Gennemgang af lejlighed", 2500.0));
             tjek.getLinjer().add(new YdelseLinje("Gennemgang af villa/hus", 3500.0));
             tjek.getLinjer().add(new YdelseLinje("Udarbejdelse af rapport", 500.0));
             ydelseRepository.save(tjek);
 
             // 5. El-bil Lader
-            Ydelse elbil = new Ydelse("Ladestander til El-bil", "Få din egen tankstation hjemme. Vi installerer ladebokse fra alle kendte mærker.", "bi-ev-station-fill");
+            Ydelse elbil = new Ydelse("Ladestander til El-bil", "Få din egen tankstation hjemme. Vi installerer ladebokse fra alle kendte mærker.", "ev_station");
             elbil.getLinjer().add(new YdelseLinje("Standard installation (op til 10m)", 4500.0));
             elbil.getLinjer().add(new YdelseLinje("Ekstra kabeltræk (pr. meter)", 150.0));
             elbil.getLinjer().add(new YdelseLinje("Opsætning af ladeboks", 1500.0));
             ydelseRepository.save(elbil);
 
             // 6. Fejlsøgning
-            Ydelse fejl = new Ydelse("Fejlsøgning & Akut hjælp", "Er strømmen gået, eller slår relæet fra? Vi finder fejlen hurtigt og effektivt.", "bi-search");
+            Ydelse fejl = new Ydelse("Fejlsøgning & Akut hjælp", "Er strømmen gået, eller slår relæet fra? Vi finder fejlen hurtigt og effektivt.", "search");
             fejl.getLinjer().add(new YdelseLinje("Første time (inkl. kørsel)", 1250.0));
             fejl.getLinjer().add(new YdelseLinje("Efterfølgende timer", 850.0));
             fejl.getLinjer().add(new YdelseLinje("Måleudstyr leje", 250.0));
             ydelseRepository.save(fejl);
 
             // 7. Køkken & Bad
-            Ydelse renovation = new Ydelse("Køkken & Badeværelse", "Renovering af strøm i vådrum og køkken. Vi flytter kontakter og trækker nye kabler.", "bi-house-gear-fill");
+            Ydelse renovation = new Ydelse("Køkken & Badeværelse", "Renovering af strøm i vådrum og køkken. Vi flytter kontakter og trækker nye kabler.", "home_repair_service");
             renovation.getLinjer().add(new YdelseLinje("Tilslutning af emhætte/komfur", 850.0));
             renovation.getLinjer().add(new YdelseLinje("Installation af spots (pr. stk)", 650.0));
             renovation.getLinjer().add(new YdelseLinje("Fræsning af riller (pr. time)", 950.0));
             ydelseRepository.save(renovation);
 
             // 8. Hvidevarer
-            Ydelse hvide = new Ydelse("Tilslutning af Hvidevarer", "Sikker tilslutning af vaskemaskine, tørretumbler, opvaskemaskine eller ovn.", "bi-lightning-charge-fill");
+            Ydelse hvide = new Ydelse("Tilslutning af Hvidevarer", "Sikker tilslutning af vaskemaskine, tørretumbler, opvaskemaskine eller ovn.", "electrical_services");
             hvide.getLinjer().add(new YdelseLinje("Tilslutning pr. maskine", 750.0));
             hvide.getLinjer().add(new YdelseLinje("Montering af lovpligtig afbryder", 350.0));
             hvide.getLinjer().add(new YdelseLinje("Bortskaffelse af gammel maskine", 400.0));
             ydelseRepository.save(hvide);
 
             // 9. Netværk & Data
-            Ydelse data = new Ydelse("Netværk & Wi-Fi", "Stabilt internet i hele huset. Vi trækker datakabler og opsætter access points.", "bi-router");
+            Ydelse data = new Ydelse("Netværk & Wi-Fi", "Stabilt internet i hele huset. Vi trækker datakabler og opsætter access points.", "router");
             data.getLinjer().add(new YdelseLinje("Dataudtag (RJ45) montering", 450.0));
             data.getLinjer().add(new YdelseLinje("Kabeltræk (pr. meter)", 75.0));
             data.getLinjer().add(new YdelseLinje("Opsætning af router/AP", 850.0));
             ydelseRepository.save(data);
 
             // 10. Dørtelefon
-            Ydelse door = new Ydelse("Dørtelefon & Adgang", "Driller dørtelefonen i opgangen? Vi servicerer og udskifter gamle anlæg.", "bi-speaker-fill");
+            Ydelse door = new Ydelse("Dørtelefon & Adgang", "Driller dørtelefonen i opgangen? Vi servicerer og udskifter gamle anlæg.", "doorbell");
             door.getLinjer().add(new YdelseLinje("Udskiftning af hustelefon (i lejlighed)", 1100.0));
             door.getLinjer().add(new YdelseLinje("Fejlsøgning på anlæg (timepris)", 850.0));
             ydelseRepository.save(door);
 
             // 11. Udendørs Belysning
-            Ydelse ude = new Ydelse("Udendørs Belysning", "Få lys i indkørslen eller haven. Vi monterer lamper med sensor eller tidsstyring.", "bi-brightness-high-fill");
+            Ydelse ude = new Ydelse("Udendørs Belysning", "Få lys i indkørslen eller haven. Vi monterer lamper med sensor eller tidsstyring.", "landscape");
             ude.getLinjer().add(new YdelseLinje("Montering af sensor", 950.0));
             ude.getLinjer().add(new YdelseLinje("Bed-lampe montering", 600.0));
             ude.getLinjer().add(new YdelseLinje("Nedgravning af kabel (pr. time)", 850.0));
             ydelseRepository.save(ude);
 
             // 12. Smart Home
-            Ydelse smart = new Ydelse("Smart Home & Styring", "Styr lyset fra telefonen. Vi installerer Philips Hue, IHC eller Shelly relæer.", "bi-phone");
+            Ydelse smart = new Ydelse("Smart Home & Styring", "Styr lyset fra telefonen. Vi installerer Philips Hue, IHC eller Shelly relæer.", "smartphone");
             smart.getLinjer().add(new YdelseLinje("Montering af lysdæmper", 650.0));
             smart.getLinjer().add(new YdelseLinje("Opsætning af Smart-relæ (Shelly)", 550.0));
             smart.getLinjer().add(new YdelseLinje("Programmering (timepris)", 950.0));

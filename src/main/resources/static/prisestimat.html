@@ -15,10 +15,10 @@
 <body>
 
 <div class="sticky-top bg-white shadow-sm border-bottom mb-4">
-  <div class="container">
+  <div class="container-fluid px-4">
     <header class="d-flex flex-wrap justify-content-center py-3">
       <a href="index.html" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
-        <span class="fs-4 fw-bold">EL-Hansen</span>
+        <span class="fs-4 fw-bold">EL–Hansen</span>
       </a>
 
       <ul class="nav nav-pills">
@@ -121,7 +121,7 @@
                   <div class="card h-100 shadow-sm border-0 bg-light service-card"
                        onclick="openCalculator(${index})">
                     <div class="card-body text-center p-4">
-                      <i class="bi ${ydelse.ikonNavn || 'bi-plug-fill'} fs-1 text-warning mb-3"></i>
+                      <span class="material-symbols-outlined">${ydelse.ikonNavn || 'power'}</span>
                       <h4 class="card-title">${ydelse.navn}</h4>
                       <p class="small text-muted">Klik for at beregne</p>
                     </div>

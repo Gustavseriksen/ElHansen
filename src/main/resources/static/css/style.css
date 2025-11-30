@@ -1,7 +1,41 @@
-/* Custom CSS til Hero sektionen */
+/* HENT FONTE (Space Grotesk + Turret Road) */
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Turret+Road:wght@300;500;800&display=swap');
+
+/* 1. HENT GOOGLE ICON'S */
+@import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0');
+
+
+/* --- GLOBAL FONT (Space Grotesk) --- */
+
+body {
+    font-family: 'Space Grotesk', sans-serif; /* <-- Her skifter vi til Space Grotesk */
+    font-weight: 400; /* Regular */
+    line-height: 1.6;
+    color: #212529;
+}
+
+/* Overskrifter (h1, h2...) */
+h1, h2, h3, h4, h5, h6, .display-4, .display-5 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700; /* Bold */
+    letter-spacing: -0.5px; /* Space Grotesk er bred, så lidt strammere tracking ser godt ud */
+}
+
+/* "Lead" tekst (Introtekster) */
+.lead {
+    font-weight: 300; /* Light */
+}
+
+/* Knapper */
+.btn {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 500; /* Medium */
+}
+
+
+/* --- HERO SEKTION --- */
 .hero-section {
-    /* URL til baggrundsbillede */
-    background-image: url('../images/frontpage-slider-image.jpg');
+    background-image: url('https://images.unsplash.com/photo-1621905251189-08b45d6a269e?q=80&w=2069&auto=format&fit=crop');
     background-size: cover;
     background-position: center;
     position: relative;
@@ -24,14 +58,104 @@
     z-index: 2;
 }
 
-/* Ændrer farven på menu-punkterne */
+
+/* --- GULE KORT DESIGN (Gælder Ydelser & Prisestimat) --- */
+
+/* 1. Selve kassen (Gul med sort kant) */
+#servicesContainer .card,
+#pricingContainer .card {
+    background-color: #EEC355 !important; /* Gul baggrund */
+    color: #212529 !important;            /* Sort tekst */
+    border: 1px solid #000000 !important; /* Sort kant */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* 2. Hover effekt */
+#servicesContainer .card:hover,
+#pricingContainer .card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2) !important;
+}
+
+/* 3. Overskrifter på kortet */
+#servicesContainer .card-title,
+#pricingContainer .card-title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+/* 4. GOOGLE IKONER (På gule kort) */
+.material-symbols-outlined {
+    font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+/* Specifik styling til kortene (Ydelser & Prisestimat) */
+#servicesContainer .card .material-symbols-outlined,
+#pricingContainer .card .material-symbols-outlined {
+    color: #000000 !important;  /* Sort */
+    font-size: 48px;            /* Stor størrelse */
+    margin-bottom: 15px;
+    background: transparent !important;
+}
+
+
+/* --- TOP BAR / MENU (Beholder Turret Road for det tekniske look) --- */
+
+/* Menu-punkter */
 .nav-pills .nav-link {
-    color: #212529; /* En mørkegrå/sort farve (standard tekstfarve) */
-    font-weight: 500; /* Gør dem evt. lidt tykkere, hvis du vil */
+    font-family: 'Turret Road', sans-serif;
+    font-weight: 300 !important;
+    font-size: 1.2rem;
+    color: #212529;
+    transition: color 0.2s;
 }
 
-/*  Gør teksten gul, når man holder musen over */
 .nav-pills .nav-link:hover {
-    color: #ffc107; /* Samme gule farve som dine knapper */
+    color: #EEC355;
 }
 
+.nav-pills .nav-link.active {
+    background-color: transparent !important;
+    color: #212529 !important;
+    font-weight: 300 !important;
+}
+
+/* Logo (EL-Hansen) */
+header .fs-4 {
+    font-family: 'Turret Road', sans-serif;
+    font-weight: 800 !important;
+    letter-spacing: 3px;
+}
+
+/* --- BRAND FARVE OVERSKRIVNING (#EEC355) --- */
+
+/* 1. Overskriv Bootstraps 'text-warning' (Ikoner og fremhævet tekst) */
+.text-warning {
+    color: #EEC355 !important;
+}
+
+/* 2. Overskriv Bootstraps 'btn-warning' (Gule knapper) */
+.btn-warning {
+    background-color: #EEC355 !important;
+    border-color: #EEC355 !important;
+    color: #000 !important; /* Sort tekst på den gule knap for læsbarhed */
+}
+
+/* Hover effekt på knapper (gør den en lille smule mørkere) */
+.btn-warning:hover {
+    background-color: #dcb34a !important; /* En anelse mørkere #EEC355 */
+    border-color: #dcb34a !important;
+}
+
+/* 3. Overskriv Bootstraps 'border-warning' (Citatboksen på Om-siden) */
+.border-warning {
+    border-color: #EEC355 !important;
+}
+
+/* 4. Overskriv spinners (Loading ikoner) */
+.spinner-border.text-warning {
+    color: #EEC355 !important;
+}
