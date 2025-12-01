@@ -131,7 +131,7 @@ public class InitData implements CommandLineRunner {
         ForsideInfo forside = new ForsideInfo(
                 "Professionelt El-arbejde",
                 "Vi sikrer lys i lampen og strøm i kontakten hos Holger Hansen.",
-                "https://images.unsplash.com/photo-1621905251189-08b45d6a269e?q=80&w=2069&auto=format&fit=crop", // Et flot elektriker billede
+                "https://www.conawayelectrical.com/wp-content/uploads/2022/04/ArcFlash-homebg.jpg",
                 "Velkommen til EL-Hansen",
                 "EL-Hansen er din lokale elektriker på Nørrebro. Jeg sætter en ære i at levere håndværk af højeste kvalitet, hvor aftaler overholdes og løsningen holder. Uanset om du skal have skiftet en stikkontakt eller renoveret hele lejligheden, står jeg klar til at hjælpe."
         );
@@ -163,7 +163,7 @@ public class InitData implements CommandLineRunner {
             tidligereOpgaveRepository.save(new TidligereOpgave(
                     "Ny eltavle i rækkehus",
                     "Udskiftning af gammel stoflednings-installation til ny sikker eltavle med automatsikringer.",
-                    "https://images.unsplash.com/photo-1556911220-e15b29be8c8f?q=80&w=2000&auto=format&fit=crop"
+                    "https://altidenergi.dk/wp-content/uploads/2024/11/el-tavle.png"
             ));
             tidligereOpgaveRepository.save(new TidligereOpgave(
                     "Belysning i kontorlandskab",
