@@ -146,7 +146,7 @@ public class InitData implements CommandLineRunner {
                 "Din garanti for en god oplevelse",
                 "Som selvstændig mester ved jeg, at min forretning kun er så god som min sidste opgave. Derfor går jeg ikke på kompromis.",
                 "Har du brug for en elektriker, der tager dit projekt seriøst – uanset om det er stort eller småt? Så kontakt mig i dag.",
-                "https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?q=80&w=2070&auto=format&fit=crop" // Et portræt billede
+                "/Billede_Af_Holger.jpg" // Et portræt billede
         );
         om.setId(1);
         omInfoRepository.save(om);
